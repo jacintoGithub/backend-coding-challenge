@@ -112,3 +112,46 @@ Feel free to comment your code, or put explanations in a pull request within the
 
 ##### Why doesn’t the test include X?
 Good question. Feel free to tell us how to make the test better. Or, you know, fork it and improve it!
+
+Run application
+===============
+
+Prerequisites
+--------------
+- Install `Maven` (https://maven.apache.org/install.html)
+- Install `Docker` (https://docs.docker.com/engine/installation)
+
+**Create `MySQL` Docker container**
+> docker run --name mysql-engagetech -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=engagetech -e MYSQL_USER=development -e MYSQL_PASSWORD=development -d mysql
+
+Stop container:
+
+> docker stop mysql-engagetech
+
+Run container again:
+
+> docker start mysql-engagetech
+
+**Run server application**
+
+> cd /backend-coding-challenge/server
+
+> mvn install
+
+Deploy `/backend-coding-challenge/server/target/expenses-server-0.0.1-SNAPSHOT.war` to the Tomcat however you like (http://www.baeldung.com/tomcat-deploy-war)
+
+Start Tomcat
+
+The application should listen in port `8081` and context path `/expenses-server`, if don't you should change `apiroot` in `/backend-coding-challenge/config.js`
+
+**Run client application**
+
+> cd /backend-coding-challenge
+
+> npm install -g gulp
+
+> npm install
+
+> gulp
+
+Navigate to `http://localhost:8080`

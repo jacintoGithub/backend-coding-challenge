@@ -9,12 +9,14 @@ Alchemytec Coding Test for Expenses Back End
 // App files
 require("./partials.js");
 require("./expenses/main.js");
+require("./services/money-conversor-service.js");
 
 // Declare app level module which depends on filters, and services
 var app = angular.module("alcExpenses", [
 	"alcShared",
 	"codingtest.partials",
-	"expenses.controllers"
+	"expenses.controllers",
+	"app.services"
 ]);
 
 app.run(["$rootScope", function($rootScope) {
